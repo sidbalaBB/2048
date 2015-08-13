@@ -1,6 +1,8 @@
 # 2048
 
+<a href="https://www.buddybuild.com">
 <img src="https://buddybuild-chris.ngrok.com/api/statusImage?appID=55cbee52340ddde14586a937&branch=master" />
+</a>
 
 This is a derivative and the iOS version of the game 2048. In the very unlikely case that you don't know what it is, you can check it out [here](https://github.com/gabrielecirulli/2048).
 
