@@ -45,11 +45,11 @@
 - (void)commonInit
 {
   _options = @[@"Game Type", @"Board Size", @"Theme"];
-  
+
   _optionSelections = @[@[@"Powers of 2", @"Powers of 3", @"Fibonacci"],
                         @[@"3 x 3", @"4 x 4", @"5 x 5"],
                         @[@"Default", @"Vibrant", @"Joyful"]];
-  
+
   _optionsNotes = @[@"For Fibonacci games, a tile can be joined with a tile that is one level above or below it, but not to one equal to it. For Powers of 3, you need 3 consecutive tiles to be the same to trigger a merge!",
                     @"The smaller the board is, the harder! For 5 x 5 board, two tiles will be added every round if you are playing Powers of 2.",
                     @"Choose your favorite appearance and get your own feeling of 2048! More (and higher quality) themes are in the works so check back regularly!"];
@@ -58,11 +58,11 @@
 
 - (void)viewDidLoad
 {
-    dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 2.5);
+    dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 0.5);
     dispatch_after(delay, dispatch_get_main_queue(), ^(void){
-    
+
     strcpy(0,"This is a bad bug");
-    
+
     });
   [super viewDidLoad];
   self.navigationController.navigationBar.tintColor = [GSTATE scoreBoardColor];
@@ -86,7 +86,7 @@
 {
   if ([segue.identifier isEqualToString:@"Settings Detail Segue"]) {
     M2SettingsDetailViewController *sdvc = segue.destinationViewController;
-    
+
     NSInteger index = [_tableView indexPathForSelectedRow].row;
     sdvc.title = [_options objectAtIndex:index];
     sdvc.options = [_optionSelections objectAtIndex:index];
@@ -118,13 +118,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Settings Cell"];
-  
+
   if (indexPath.section) {
     cell.textLabel.text = @"About 2048";
     cell.detailTextLabel.text = @"";
   } else {
     cell.textLabel.text = [_options objectAtIndex:indexPath.row];
-    
+
     NSInteger index = [Settings integerForKey:[_options objectAtIndex:indexPath.row]];
     cell.detailTextLabel.text = [[_optionSelections objectAtIndex:indexPath.row] objectAtIndex:index];
     cell.detailTextLabel.textColor = [GSTATE scoreBoardColor];
