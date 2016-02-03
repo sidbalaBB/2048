@@ -61,7 +61,7 @@
     dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 0.5);
     dispatch_after(delay, dispatch_get_main_queue(), ^(void){
 
-    strcpy(0,"This is a bad bug");
+    //strcpy(0,"This is a bad bug");
 
     });
   [super viewDidLoad];
